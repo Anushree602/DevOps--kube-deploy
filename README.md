@@ -4,44 +4,15 @@ then create 2 files deployment.yaml, and service.yaml
 
 deployment.yaml
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myapp-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: myapp
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-      - name: myapp
-        image: nginx
-        ports:
-        - containerPort: 80
+<img width="239" height="379" alt="Screenshot 2025-09-29 171932" src="https://github.com/user-attachments/assets/3e76f449-d0c0-49e1-a11a-9c7b6296f390" />
 
 apply it using kubectl apply -f deployment.yaml
 kubectl get pods
 
 service.yaml
 
-        apiVersion: v1
-kind: Service
-metadata:
-  name: myapp-service
-spec:
-  selector:
-    app: myapp
-  type: NodePort
-  ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30007
-      
+<img width="234" height="253" alt="Screenshot 2025-09-29 171948" src="https://github.com/user-attachments/assets/7685f59b-1557-4667-b647-0978e27d2a21" />
+  
 apply it using kubectl apply -f service.yaml
 kubectl get svc
 
